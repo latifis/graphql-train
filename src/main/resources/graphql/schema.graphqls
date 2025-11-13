@@ -1,0 +1,41 @@
+type Brand {
+    id: ID!
+    name: String
+    country: String
+    establishedAt: String
+}
+
+type Type {
+    id: ID!
+    typeName: String
+}
+
+type Car {
+    id: ID!
+    name: String
+    color: String
+    transmission: TransmissionType
+    isElectric: Boolean
+    brand: Brand
+    type: Type
+}
+
+type CarCatalogue {
+    id: ID!
+    ready: Boolean
+    price: Float
+    stock: Int
+    car: Car
+}
+
+enum TransmissionType {
+    AT
+    MT
+}
+
+type Query {
+    getCars: [Car]
+    getCarById(id: ID!): Car
+    getCatalogue: [CarCatalogue]
+    getCatalogueById(id: ID!): CarCatalogue
+}
